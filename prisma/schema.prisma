@@ -45,7 +45,6 @@ model Produto {
 
   Categoria    Categoria? @relation(fields: [categoriaId], references: [id])
   categoriaId  String?
-  id_categoria String
   items        Item[]
 
   @@map("produtos")

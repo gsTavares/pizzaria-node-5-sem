@@ -7,6 +7,7 @@ type CreateCategoryRequest = {
 class CreateCategoryService {
 
     execute = async ({ nome }: CreateCategoryRequest) => {
+
         if (!nome) {
             throw new Error('O nome precisa ser informado!');
         }
