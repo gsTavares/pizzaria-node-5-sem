@@ -18,6 +18,7 @@ import { ListByCategoryController } from './controllers/product/ListByCategoryCo
 import { SendOrderController } from './controllers/order/SendOrderController';
 import { RemoveItemController } from './controllers/order/RemoveItemController';
 import { ListNotFinishedController } from './controllers/order/ListNotFinishedController';
+import { ListFinishedController } from './controllers/order/ListFinishedController';
 
 const router = Router();
 
@@ -37,6 +38,7 @@ router.post('/order', isAuthenticated, new CreateOrderController().handle);
 router.post('/order/item', isAuthenticated, new AddItemController().handle);
 
 router.get('/order/not-finished', isAuthenticated, new ListNotFinishedController().handle);
+router.get('/order/finished', isAuthenticated, new ListFinishedController().handle);
 
 router.put('/order/send', isAuthenticated, new SendOrderController().handle);
 
