@@ -19,6 +19,8 @@ import { SendOrderController } from './controllers/order/SendOrderController';
 import { RemoveItemController } from './controllers/order/RemoveItemController';
 import { ListNotFinishedController } from './controllers/order/ListNotFinishedController';
 import { ListFinishedController } from './controllers/order/ListFinishedController';
+import { FinishController } from './controllers/order/FinishController';
+import { PayController } from './controllers/order/PayController';
 
 const router = Router();
 
@@ -26,6 +28,7 @@ const upload = multer(uploadConfig.upload('./tmp'));
 
 router.post('/user', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
+
 router.get('/userinfo', isAuthenticated, new DetailUserController().handle);
 
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
@@ -41,6 +44,8 @@ router.get('/order/not-finished', isAuthenticated, new ListNotFinishedController
 router.get('/order/finished', isAuthenticated, new ListFinishedController().handle);
 
 router.put('/order/send', isAuthenticated, new SendOrderController().handle);
+router.put('/order/finish', isAuthenticated, new FinishController().handle);
+router.put('/order/pay', isAuthenticated, new PayController().handle);
 
 router.delete('/order', isAuthenticated, new DeleteOrderController().handle);
 router.delete('/order/item', isAuthenticated, new RemoveItemController().handle);

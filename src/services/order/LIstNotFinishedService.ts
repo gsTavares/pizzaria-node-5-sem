@@ -13,7 +13,7 @@ class ListNotFinishedService {
             throw new Error('A data deve ser informada para o filtro!');
         }
 
-        const orders = await prismaClient.$queryRaw`SELECT * FROM pedidos WHERE status = false AND CAST(criado_em as date) = CAST(${criado_em} as date)`;
+        const orders = await prismaClient.$queryRaw<Pedido[]>`SELECT * FROM pedidos WHERE status = false AND CAST(criado_em as date) = CAST(${criado_em} as date)`;
 
         return orders;
 
